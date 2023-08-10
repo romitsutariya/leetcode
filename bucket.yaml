@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Create an S3 Bucket for UI Images and Attach an IAM Role
+
+Resources:
+  UIImagesBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: my-ui-images-bucket
+      AccessControl: Private
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  ImagesBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref UIImagesBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action: s3:GetObject
+            Resource: !Sub arn:aws:s3:::${UIImagesBucket}/*
+            Principal: "*"
+            Condition:
+              StringEquals:
+                aws:PrincipalType: "AssumedRole"
+            Sid: AllowAssumedRole
+
+ 

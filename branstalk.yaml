@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Deploy Sample React Application from GitHub in Elastic Beanstalk
+
+Resources:
+  MyVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+
+  ElasticBeanstalkRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: ElasticBeanstalkRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: elasticbeanstalk.amazonaws.com
+            Action: sts:AssumeRole
+
+  ElasticBeanstalkS3AccessPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: ElasticBeanstalkS3AccessPolicy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - s3:GetObject
+            Resource: !Sub arn:aws:s3:::my-ui-images-bucket/*
+      Roles:
+        - Ref: ElasticBeanstalkRole
+
+  UIImagesBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: my-ui-images-bucket
+      AccessControl: Private
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  ReactApp:
+    Type: AWS::ElasticBeanstalk::Application
+    Properties:
+      ApplicationName: MyReactApp
+
+  ReactAppVersion:
+    Type: AWS::ElasticBeanstalk::ApplicationVersion
+    Properties:
+      ApplicationName: !Ref ReactApp
+      Description: Version 1.0
+      SourceBundle:
+        S3Bucket: your-react-app-bucket
+        S3Key: react-app.zip  # This should point to the application bundle in S3
+
+  ReactAppEnvironment:
+    Type: AWS::ElasticBeanstalk::Environment
+    Properties:
+      ApplicationName: !Ref ReactApp
+      EnvironmentName: MyReactAppEnv
+      SolutionStackName: 64bit Amazon Linux 2 v5.4.5 running Node.js 14
+      OptionSettings:
+        - Namespace: aws:elasticbeanstalk:container:nodejs
+          OptionName: ProxyServer
+          Value: nginx
+
+Outputs:
+  BeanstalkURL:
+    Description: URL of the Elastic Beanstalk environment
+    Value: !GetAtt ReactAppEnvironment.EndpointURL
