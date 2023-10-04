@@ -1,0 +1,15 @@
+I recently interviewed with a company I won’t name but that, if you know me, you know would be a DREAM come true for me to work for. Not only did I not get the job, but it doesn’t look like the company will ever want to employ me. Doh!
+
+I want to share some thoughts with you on where I went wrong because, whoever you are, I don’t want this to happen to you!
+
+First, I made a snap decision during an incredibly stressful time, applied quickly, got a response quickly, and scheduled 5 rounds of interviews in one day so that I wouldn’t have to take too much time away from work. I gave myself a few days to prepare—a long weekend, basically. If you know anything about sys design and/or coding  interviews, you know that this is insane. Two of the rounds were after 5pm and I'm a morning person. What was I thinking? There’s no amount of coffee or mushroom gummies that can mitigate that.
+
+Second, I focused on brushing up on actual architecture fundamentals rather than specifically on how to INTERVIEW in that context. It’s not enough to know your stuff and do your job well. You have to do the interview well. Based on the feedback, that was my downfall.
+
+There are many schools of thought on how effective technical interviews are. For an Engineering Manager or other non-IC role, a coding challenge is pretty pointless—and a waste of everyone’s time—but the sys architecture interview is a valid way to gauge how someone thinks about and explains complex systems. The interviewers just met you and have no idea how good you really are. It’s up to you to get that across. I didn’t. And now I’ve lost an opportunity that meant the world to me [cue sad violins].
+
+So what do you do? Start by really knowing your stuff but for god’s sake don’t stop there! Practice! Ideally with another human. Ask for honest feedback.
+
+When you get in the room, practice clarifying requirements before you start thinking about systems—even if it’s something you’re already familiar with. Don’t rush. The interviewer has no idea what you do and don’t know and they make no assumptions based on your work experience. Ask questions. Be really deliberate—even about aspects like caching, load balancing, queues, logging, datastores, and distributed systems… things that are so interwoven into the fabric of what you do day to day that you no longer think of them as needing to be spelled out. HOW you explain all that IS the point.
+
+Do I have regrets? Yes! I wish I could go back in time and not have applied until I had taken a few weeks—or even months—to prepare. Failing to get my dream job is crushing! But I have to remind myself that what I failed to do on those fateful Zoom calls was to demonstrate my skill adequately. And what someone can glean about you in 40 minutes, as well-intentioned as they may be, simply cannot be the final word.
