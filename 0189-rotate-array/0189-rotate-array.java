@@ -8,9 +8,8 @@ class Solution {
         if(k>n) return;
         
         int[] temp = new int[k];
-        int count=0;
         for(int i=n-k;i<n;i++){
-            temp[count++]=nums[i];
+            temp[i-n+k]=nums[i];
         }
         
         for(int i=n-k-1;i>=0;i--){
