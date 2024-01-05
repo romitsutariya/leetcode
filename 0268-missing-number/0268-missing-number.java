@@ -5,6 +5,7 @@ class Solution {
           for(int i=0;i<nums.length;i++){
               if(nums[i]==j){
                   index=i;
+                  break;
               }
           }
           if(index==-1){
