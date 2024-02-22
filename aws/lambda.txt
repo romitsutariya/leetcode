@@ -1,0 +1,10 @@
+Runtime: Runtime Execution environment like java, python
+Funtion: Actual code of the function should be very small in size
+Handler: method which get executed when lambda get executed
+Trigger: source that executes the lambda fuctions
+Event: Json formatted document that containes details about change
+Excution environment: provides secure and isolated environment
+layer: share common library,common config and other environment variable
+Concurrency: no of request lambda can executed at given time
+Destination: A aws resource where lambda can send event from the asynchronus invocation.
+ 
